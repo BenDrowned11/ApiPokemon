@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Pokémon List
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Detalles del Pokémon seleccionado -->
+  <div *ngIf="pokemon">
+    <h2>{{ pokemon.name | uppercase }}</h2>
+    <img [src]="pokemon.sprites.front_default" alt="{{ pokemon.name }}">
+    <p><strong>Height:</strong> {{ pokemon.height }}</p>
+    <p><strong>Weight:</strong> {{ pokemon.weight }}</p>
+    <p><strong>Base Experience:</strong> {{ pokemon.base_experience }}</p>
+  </div>
+
+  <!-- Lista de Pokémon -->
+  <ion-list>
+    <ion-item *ngFor="let poke of pokemonList" (click)="fetchPokemonDetails(poke.url)">
+      <ion-label>{{ poke.name | uppercase }}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
